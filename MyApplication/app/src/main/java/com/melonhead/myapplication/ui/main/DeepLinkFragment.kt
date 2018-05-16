@@ -10,13 +10,13 @@ import androidx.navigation.Navigation
 import com.melonhead.myapplication.R
 import kotlinx.android.synthetic.main.main_fragment.*
 
-class MainFragment : Fragment() {
+class DeepLinkFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = DeepLinkFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: DeepLinkViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -25,14 +25,10 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        viewModel.text = MainFragmentArgs.fromBundle(arguments).string
+        viewModel = ViewModelProviders.of(this).get(DeepLinkViewModel::class.java)
+        viewModel.text = DeepLinkFragmentArgs.fromBundle(arguments).string
         message.text = viewModel.text
-        when (viewModel.text) {
-            "\"1\"" -> button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.mainFragment2))
-            "\"2\"" -> button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.mainFragment3))
-            "\"3\"" -> button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.deepLinkFragment))
-        }
+        button.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.mainFragment2, null))
     }
 
 }

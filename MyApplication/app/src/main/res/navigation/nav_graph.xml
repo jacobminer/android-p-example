@@ -8,5 +8,49 @@
         android:id="@+id/mainFragment"
         android:name="com.melonhead.myapplication.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" />
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_mainFragment2"
+            app:destination="@id/mainFragment2" />
+        <argument
+            android:name="string"
+            android:defaultValue='"1"'
+            app:type="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment2"
+        android:name="com.melonhead.myapplication.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <argument
+            android:name="string"
+            android:defaultValue='"2"'
+            app:type="string" />
+        <action
+            android:id="@+id/action_mainFragment2_to_mainFragment3"
+            app:destination="@id/mainFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment3"
+        android:name="com.melonhead.myapplication.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment">
+        <argument
+            android:name="string"
+            android:defaultValue='"3"'
+            app:type="string" />
+        <action
+            android:id="@+id/action_mainFragment3_to_deepLinkFragment"
+            app:destination="@id/deepLinkFragment" app:launchSingleTop="true" app:clearTask="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/deepLinkFragment"
+        android:name="com.melonhead.myapplication.ui.main.DeepLinkFragment"
+        android:label="DeepLinkFragment">
+        <deepLink app:uri="example" />
+        <argument
+            android:name="string"
+            android:defaultValue='"deep"'
+            app:type="string" />
+    </fragment>
 </navigation>
